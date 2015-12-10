@@ -20,7 +20,7 @@ The following requirements were met:
 Access information: 
 ===================
 
-1. You can access the solution from the Github repository at: 
+1. You can access the solution from the Github repository at: https://github.com/cmmwahid/RactiveTest
 2. You can also access the solution from here: http://www.cmmwahid.org/ractivetest
 3. You can access the TDD test suites from here: http://www.cmmwahid.org/ractivetest/jasmine/specrunner.html
 4. You can download the zipped package from the following location: http://www.cmmwahid.org/RactiveTest.zip
