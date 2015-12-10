@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ractive Test</title>
+
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  	<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+	
+ 	<div id="containers-wrapper">
+ 		
+
+ 	</div>
+
+	<div class="controls container">
+		
+		<div class="control-containers">
+			<select name="progessbars" id="progressbars" class="form-control">
+			    <option value="progress1">#Progress1</option>
+			    <option value="progress2">#Progress2</option>
+			    <option value="progress3">#Progress3</option>
+			    <option value="progress4">#Progress4</option>
+			    <option value="progress5">#Progress5</option>
+			    <option value="progress6">#Progress6</option>		    		    
+			</select>	
+		</div>
+		
+		<div class="control-containers">
+			<input type="button" value="-25" id="subtract25" class="form-control btn btn-success">	
+		</div>	
+
+		<div class="control-containers">
+			<input type="button" value="-10" id="subtract10" class="form-control btn btn-success">	
+		</div>
+		<div class="control-containers">
+			<input type="button" value="10" id="add10" class="form-control btn btn-success">
+		</div>
+
+		<div class="control-containers">
+			<input type="button" value="25" id="add25" class="form-control btn btn-success">	
+
+		</div>		
+		
+	</div>
+
+	
+
+	<script src="js/jquery.min.js"></script>
+  	<script src="js/bootstrap.min.js"></script>
+	<script src='js/ractive.js'></script>
+	<script id="template" type="text/ractive">
+
+		<div class="progress">
+		    <div class="progress-bar {{bgcolor}}" style="width:{{width}}%">
+		      <span>{{width}}%</span>
+		    </div>
+	  	</div>
+	</script>
+	<script src="js/main.js"></script>
+
+	
+
+	
+
+</body>
+</html>
