@@ -11,8 +11,19 @@
 
 			var i = 0;
 
-			for (i =0 ; i<x; i++)
+			for (i =0 ; i<6; i++)
 			{
+				this.addToProgressBars();
+			};
+			
+			
+
+		};
+
+			ProgressBars.prototype.addToProgressBars = function(){
+
+				var i = document.getElementById("progressbars").options.length;
+				var containersWrapper = document.getElementById("containers-wrapper");
 				myContainer = document.createElement('div');
 				myContainer.setAttribute ("id", "container" + (i+1));
 				myContainer.setAttribute ("class", "container");
@@ -27,11 +38,36 @@
 					data:{width: widthValue, bgcolor: bgcolorValue}
 				});
 
-				this.ractive.push(ractiveObj);				
-			};
-			
+				this.ractive.push(ractiveObj);					
+				
 
-		};
+				var pb = document.getElementById("progressbars");
+				var newOption = document.createElement("option");
+				newOption.text = "#Progress" + (i+1);
+				newOption.value = "progress" + (i+1);
+
+				pb.add(newOption);
+
+
+			}
+			ProgressBars.prototype.removeFromProgressBars = function(){
+
+				var length = document.getElementById("progressbars").options.length;
+				
+				if (length>6)
+				{
+					//remove from dropdown
+					document.getElementById("progressbars").options[length-1] = null;
+					
+					//remove from DOM
+					var parent = document.getElementById("containers-wrapper");
+					var child = document.getElementById("container"+ length);
+					parent.removeChild(child);
+
+					//remove from ractive array
+					this.ractive.pop();
+				}
+			}
 
 			ProgressBars.prototype.controlButtonAction = function(widthValue){
 
@@ -53,6 +89,7 @@
 			ProgressBars.prototype.getWidth = function (selectedProgressBar){
 
 				var value =this.ractive[selectedProgressBar].get( 'width' ) ; 
+				console.log (selectedProgressBar);
 				
 	  			return value;
 			};
@@ -114,7 +151,22 @@
 
 				ProgressBarsObj.controlButtonAction(25);
 	  			
+			});
+
+			document.getElementById( 'add' ).addEventListener( 'click', function () {
+
+				ProgressBarsObj.addToProgressBars();
+	  			
 			}); 
+
+			document.getElementById( 'remove' ).addEventListener( 'click', function () {
+
+				ProgressBarsObj.removeFromProgressBars();
+
+
+	  			
+			}); 
+			
 
 
 

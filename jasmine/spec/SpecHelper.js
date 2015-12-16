@@ -114,47 +114,52 @@ describe ("Click Events of the Action Buttons", function(){
 	});
 
 
-	it ("should add 25 after adding 10 to the first progress bar", function() {
+	it ("should generate add10 click events", function() {
 	 	
-	 	ProgressBarsObj.setProgressBarsDropDown(0);
-	    $('#add10').trigger( "click" );
-	    $('#add25').trigger( "click" );
-	    expect(ProgressBarsObj.getWidth(0)).toBe (35);
+	 	
+	 	spyEvent = spyOnEvent('#add10', 'click');
+    	$('#add10').trigger( "click" );
+       
+    	expect('click').toHaveBeenTriggeredOn('#add10');
+    	expect(spyEvent).toHaveBeenTriggered();
+	    
+	    
+	});
+	it ("should generate add25 click events", function() {
+	 	
+	 	
+	 	spyEvent = spyOnEvent('#add25', 'click');
+    	$('#add25').trigger( "click" );
+       
+    	expect('click').toHaveBeenTriggeredOn('#add25');
+    	expect(spyEvent).toHaveBeenTriggered();
+	    
 	    
 	});
 
-		
-
-});
-
-describe ("More Click Events of the Action Buttons", function(){
-
-	var ProgressBarsObj;
-	beforeEach(function() {
-
-		loadFixtures('myfixture.html');
-		ProgressBarsObj = new ProgressBars();
-		ProgressBarsObj.Init();	
+	it ("should generate subtract10 click events", function() {
+	 	
+	 	
+	 	spyEvent = spyOnEvent('#subtract10', 'click');
+    	$('#subtract10').trigger( "click" );
+       
+    	expect('click').toHaveBeenTriggeredOn('#subtract10');
+    	expect(spyEvent).toHaveBeenTriggered();
 	    
-	});
-	afterEach (function (){
-		
-		ProgressBarsObj = null;	
-		
-	});
-
-
-	it ("should subtract 25 after adding 35 to first progress bar", function() {
-		
-		ProgressBarsObj.setProgressBarsDropDown(0);
-		
-	 	$('#add10').trigger( "click" );
-	    $('#add25').trigger( "click" );
-	    $('#subtract25').trigger( "click" );
-	    expect(ProgressBarsObj.getWidth(0)).toBe (10);
 	    
 	});
 
+	it ("should generate subtract25 click events", function() {
+	 	
+	 	
+	 	spyEvent = spyOnEvent('#subtract25', 'click');
+    	$('#subtract25').trigger( "click" );
+       
+    	expect('click').toHaveBeenTriggeredOn('#subtract25');
+    	expect(spyEvent).toHaveBeenTriggered();
+	    
+	    
+	});
 	
 });
 
@@ -181,67 +186,6 @@ describe("Last ProgressBar is selected", function() {
     });
 
    
-    
-});
-
-describe("Active ProgressBar changed to the last one", function() {
-	var ProgressBarsObj;
-	beforeEach(function() {
-		loadFixtures('myfixture.html');
-		ProgressBarsObj = new ProgressBars();
-	    ProgressBarsObj.Init();
-	});
-	afterEach (function (){
-
-		ProgressBarsObj = null;	
-		
-
-	});
-
-   
-    it ("should add 10 to the last progress bar", function() {
-		
-        ProgressBarsObj.setProgressBarsDropDown(5);
-        
-	    $('#add10').trigger( "click" );
-	    expect(ProgressBarsObj.getWidth(5)).toBe (135);
-	    expect(ProgressBarsObj.getColor(5)).toBe ("progress-bar-danger");
-	    
-	});
-    
-   
-    
-});
-
-describe("ProgressBar changed to the last one", function() {
-	var ProgressBarsObj;
-	beforeEach(function() {
-		loadFixtures('myfixture.html');
-		ProgressBarsObj = new ProgressBars();
-	    ProgressBarsObj.Init();
-	});
-	afterEach (function (){
-
-		ProgressBarsObj = null;	
-
-
-
-	});
-
-
-    
-    it ("should subtract 35 (-10, -25) from the the last progress bar", function() {
-		
-		ProgressBarsObj.setProgressBarsDropDown(5);
-		
-		expect(ProgressBarsObj.getWidth(5)).toBe (125);
-        
-	    $('#subtract10').trigger( "click" );
-	    $('#subtract25').trigger( "click" );
-	    expect(ProgressBarsObj.getWidth(5)).toBe (90);
-	    expect(ProgressBarsObj.getColor(5)).toBe ("progress-bar-success");
-
-	});
     
 });
 
